@@ -1,0 +1,7 @@
+After running terraform init, terraform plan, and terraform apply, first go to the top-right corner of AWS Console and make sure the region is set to Mumbai (ap-south-1) because Terraform deployed all resources there. Then go to EC2 → Instances and show that two EC2 instances named Web-0 and Web-1 are running successfully in different Availability Zones (ap-south-1a and ap-south-1b). Open the public IP of both instances in the browser and show that Apache web server is running with different outputs like “Version 1 - Server 0” and “Version 1 - Server 1”. Also show the security group allowing HTTP traffic on port 80 and SSH on port 22. This proves Terraform automatically created the infrastructure and deployed web servers successfully.
+
+Next, go to VPC → Your VPCs and show the Terraform-created VPC and subnets. Then show the manually attached Internet Gateway and Route Table association used to provide internet access to the EC2 instances. Finally, show the Terraform terminal output containing:
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+and explain the zero downtime concept by telling the professor that multiple servers are deployed in separate Availability Zones, so if one instance fails, the second instance can continue serving the application without interruption. This ensures high availability and zero downtime architecture.

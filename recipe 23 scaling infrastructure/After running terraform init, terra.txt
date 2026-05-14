@@ -1,0 +1,9 @@
+After running terraform init, terraform plan, and terraform apply, first go to the top-right corner of AWS Console and make sure the region is set to Mumbai (ap-south-1) because your Terraform deployed resources there. Then go to EC2 → Instances and show the professor that 2 EC2 instances are running. After that, go to EC2 → Auto Scaling Groups and open your Auto Scaling Group. Show that the minimum capacity is 1, desired is 2, and maximum is 4. This proves Auto Scaling is configured properly.
+
+Next, go to EC2 → Load Balancers, open asg-alb, copy the DNS name, and open it in the browser. The webpage should display “Auto Scaling Server”. Then go to Target Groups → asg-tg and show that the instances are healthy. After that, open CloudWatch → Alarms and show the cpu-high alarm. Initially it will be in OK state.
+
+Finally, connect to one EC2 instance using EC2 Instance Connect and run:
+
+sudo apt update
+sudo apt install stress -y
+stress --cpu 2 --timeout 300
